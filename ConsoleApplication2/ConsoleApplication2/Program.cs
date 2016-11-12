@@ -10,68 +10,50 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            bool i = true;
-            int num = 0, resp = 0, opcao = 0;
-            char operador;
-            while (i)
+            int num = 0, resp = 0;
+            string x;
+            char operador, i = 'S';
+            while (i == 'S')
             {
-                Console.WriteLine("Deseja informar um novo número (1) ou operador(2)?");
-                opcao = Console.Read();
-                if (opcao == '2')
-                {
-                    Console.WriteLine("Informe o operador: ");
-                    opcao = Console.Read();
-                    operador = Convert.ToChar(opcao);
-                  
-                    if (resp != 0)
-                    {
-                        Console.WriteLine("Informe um número: ");
-                        num = Console.Read();
-                    }else
-                    {
-                        Console.WriteLine("Informe um número: ");
-                        resp = Console.Read();
-                        Console.WriteLine("Informe um novo número: ");
-                        resp = Console.Read();
-                    }
+                Console.WriteLine("Informe um número: ");
+                x = Console.ReadLine();
+                resp = Int32.Parse(x);
 
-                    Console.WriteLine(resp);
-                    switch (operador)
-                    {
-                        case '+': resp = resp + num;
-                                  break;
-                        case '-': resp = resp - num;
-                                  break;
-                        case '*': resp = resp * num;
-                                  break;
-                        case '/':
-                                  if (num != 0)
-                                  {
-                                    resp = resp / num;
-                                  }else
-                                  {
-                                    Console.WriteLine("Erro. Tentativa de divisão por 0");
-                                  }
+                Console.WriteLine("Informe outro número: ");
+                x = Console.ReadLine();
+                num = Int32.Parse(x);
+
+                Console.WriteLine("Informe a operação (+, -, *, /)");
+                x = Console.ReadLine();
+                operador = Convert.ToChar(x);
+                     
+                switch (operador)
+                {
+                    case '+': resp = resp + num;
+                              break;
+                    case '-': resp = resp - num;
+                              break;
+                    case '*': resp = resp * num;
+                              break;
+                    case '/': if (num != 0)
+                              {
+                                 resp = resp / num;
+                              }
+                              else
+                              {
+                                 Console.WriteLine("Erro. Tentativa de divisão por 0");
+                              }
                                  break;
-                        default: break;     
-                    }
+                   default: break;     
                 }
-                else
-                {
-                    Console.WriteLine("Informe um número: ");
-                    resp = Console.Read();
-                }
-                Console.WriteLine("\nResposta:" + resp);
+                Console.WriteLine("\nResultado: " + resp);
                 Console.WriteLine("Deseja continuar? (S ou N)");
-                opcao = Console.Read();
-                opcao = Convert.ToChar(opcao);
-                if (opcao == 'S')
+                x = Console.ReadLine().ToUpper();
+                i = Convert.ToChar(x);
+
+                if (i != 'S')
                 {
-                    i = true;
-                }
-                else
-                {
-                    i = false;
+                    i = 'N';
                 }
             }
             
