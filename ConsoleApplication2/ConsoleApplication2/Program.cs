@@ -11,21 +11,18 @@ namespace ConsoleApplication2
         static void Main(string[] args)
         {
             int num = 0, resp = 0;
-            string x;
             char operador, i = 'S';
+
             while (i == 'S')
             {
                 Console.WriteLine("Informe um número: ");
-                x = Console.ReadLine();
-                resp = Int32.Parse(x);
+                resp = Int32.Parse(Console.ReadLine());
 
                 Console.WriteLine("Informe outro número: ");
-                x = Console.ReadLine();
-                num = Int32.Parse(x);
+                num = Int32.Parse(Console.ReadLine());
 
                 Console.WriteLine("Informe a operação (+, -, *, /)");
-                x = Console.ReadLine();
-                operador = Convert.ToChar(x);
+                operador = Convert.ToChar(Console.ReadLine());
                      
                 switch (operador)
                 {
@@ -48,13 +45,7 @@ namespace ConsoleApplication2
                 }
                 Console.WriteLine("\nResultado: " + resp);
                 Console.WriteLine("Deseja continuar? (S ou N)");
-                x = Console.ReadLine().ToUpper();
-                i = Convert.ToChar(x);
-
-                if (i != 'S')
-                {
-                    i = 'N';
-                }
+                i = Convert.ToChar(Console.ReadLine().ToUpper());
             }
             
         }
